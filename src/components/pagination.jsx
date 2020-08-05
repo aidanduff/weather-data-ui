@@ -13,9 +13,15 @@ const Pagination = ({
   let paginationButton = 1;
   return (
     <nav>
-      <ul className="pagination">
-        <li className="page-link" onClick={() => onPageChange(--currentPage)}>
-          Previous
+      <ul className="pagination m-2">
+        <li>
+          <a
+            className="page-link"
+            href="/#"
+            onClick={() => onPageChange(--currentPage)}
+          >
+            Previous
+          </a>
         </li>
         {pages.map((page) =>
           paginationButton++ <= 3 || paginationButton >= pagesCount - 1 ? (
@@ -35,12 +41,18 @@ const Pagination = ({
             </li>
           ) : paginationButton === pagesCount / 2 ? (
             <li key={page} className="page-link disabled">
-              ...
+              <a href="/#">...</a>
             </li>
           ) : null
         )}
-        <li className="page-link" onClick={() => onPageChange(++currentPage)}>
-          Next
+        <li>
+          <a
+            className="page-link"
+            href="/#"
+            onClick={() => onPageChange(++currentPage)}
+          >
+            Next
+          </a>
         </li>
       </ul>
     </nav>
