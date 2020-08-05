@@ -17,12 +17,12 @@ class WeatherData extends Component {
   }
 
   handlePageChange = (page) => {
+    console.log("currentPage" + page);
     this.setState({ currentPage: page });
   };
 
   render() {
     const { currentPage, pageSize } = this.state;
-    console.log(this.state.weatherDataItems.length);
 
     if (this.state.weatherDataItems.length === 0) return null;
 
