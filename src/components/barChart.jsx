@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Pie, Line } from "react-chartjs-2";
-import PieChart from "./pieChart";
+import { Bar } from "react-chartjs-2";
 
 class BarChart extends Component {
   getChartData(weatherDataItems) {
@@ -34,46 +33,14 @@ class BarChart extends Component {
   }
 
   render(props) {
-    const allData = this.props.weatherDataItems;
-    const chartData = this.getChartData(allData);
-
-    console.log("render");
+    const chartData = this.getChartData(this.props.weatherDataItems);
     return (
-      <div key={this.props.weatherDataItems[0].year} className="chart col">
-        <div className="row m-2">
-          <div class="card">
-            <h5 class="card-header">Rainy Days Per Month</h5>
-            <div class="card-body">
-              <p class="card-text">
-                <Bar
-                  data={chartData}
-                  width={500}
-                  height={220}
-                  options={{ maintainAspectRatio: false }}
-                />
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="row m-2">
-          <div class="card">
-            <h5 class="card-header">Precipitation Per Season</h5>
-            <div class="card-body">
-              <p class="card-text">
-                <PieChart weatherDataItems={this.props.weatherDataItems} />
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* <div className="row">
-          <Line
-            data={chartData}
-            width={50}
-            height={230}
-            options={{ maintainAspectRatio: false }}
-          />
-        </div> */}
-      </div>
+      <Bar
+        data={chartData}
+        width={500}
+        height={220}
+        options={{ maintainAspectRatio: false }}
+      />
     );
   }
 }

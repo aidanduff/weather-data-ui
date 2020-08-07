@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 export function getSeasonalPrecipitation(items) {
   const seasons = [0, 0, 0, 0];
 

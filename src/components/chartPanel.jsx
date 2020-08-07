@@ -1,27 +1,34 @@
 import React, { Component } from "react";
+import BarChart from "./barChart";
+import PieChart from "./pieChart";
 
-class GraphPanel extends Component {
-  state = {};
-  render() {
+class ChartPanel extends Component {
+  render(props) {
     return (
       <div key={this.props.weatherDataItems[0].year} className="chart col">
-        <div className="row">
-          <BarChart />
+        <div className="row mt-2 mb-3">
+          <div className="card">
+            <h5 className="card-header">Rainy Days Per Month</h5>
+            <div className="card-body">
+              <p className="card-text">
+                <BarChart weatherDataItems={this.props.weatherDataItems} />
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="row">
-          <PieChart />
-        </div>
-        <div className="row">
-          <Line
-            data={chartData}
-            width={50}
-            height={225}
-            options={{ maintainAspectRatio: false }}
-          />
+        <div className="row mt-2">
+          <div className="card">
+            <h5 className="card-header">Precipitation Per Season</h5>
+            <div className="card-body">
+              <p className="card-text">
+                <PieChart weatherDataItems={this.props.weatherDataItems} />
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default GraphPanel;
+export default ChartPanel;

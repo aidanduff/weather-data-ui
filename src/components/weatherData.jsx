@@ -3,7 +3,7 @@ import WeatherDataService from "../services/weatherDataService";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import WeatherDataTable from "./weatherDatatable";
-import BarChart from "./barChart";
+import ChartPanel from "./chartPanel";
 
 class WeatherData extends Component {
   state = {
@@ -55,7 +55,7 @@ class WeatherData extends Component {
             />
           </div>
           <div className="col">
-            <BarChart weatherDataItems={weatherDataItems} />
+            <ChartPanel weatherDataItems={weatherDataItems} />
           </div>
         </div>
       </div>

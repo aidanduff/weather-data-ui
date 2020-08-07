@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Pie, Line } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { getSeasonalPrecipitation } from "../utils/seasonalPrecipitation";
 
 class PieChart extends Component {
@@ -14,19 +14,13 @@ class PieChart extends Component {
       },
     ];
 
-    console.log("render");
-    console.log(chartData);
     return (
-      <div key={this.props.weatherDataItems[0].year} className="chart col">
-        <div className="row">
-          <Pie
-            data={chartData}
-            width={500}
-            height={220}
-            options={{ maintainAspectRatio: false }}
-          />
-        </div>
-      </div>
+      <Pie
+        data={chartData}
+        width={500}
+        height={220}
+        options={{ maintainAspectRatio: true }}
+      />
     );
   }
 }
