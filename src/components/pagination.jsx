@@ -15,11 +15,8 @@ const Pagination = ({
     <nav>
       <ul className="pagination m-2">
         <li>
-          <a
-            className="page-link"
-            href="/#"
-            onClick={() => onPageChange(--currentPage)}
-          >
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a className="page-link" onClick={() => onPageChange(--currentPage)}>
             Previous
           </a>
         </li>
@@ -31,26 +28,21 @@ const Pagination = ({
                 page === currentPage ? "page-item active" : "page-item"
               }
             >
-              <a
-                className="page-link"
-                href="/#"
-                onClick={() => onPageChange(page)}
-              >
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="page-link" onClick={() => onPageChange(page)}>
                 {page}
               </a>
             </li>
           ) : paginationButton === pagesCount / 2 ? (
             <li key={page} className="page-link disabled">
-              <a href="/#">...</a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a>...</a>
             </li>
           ) : null
         )}
         <li>
-          <a
-            className="page-link"
-            href="/#"
-            onClick={() => onPageChange(++currentPage)}
-          >
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a className="page-link" onClick={() => onPageChange(++currentPage)}>
             Next
           </a>
         </li>

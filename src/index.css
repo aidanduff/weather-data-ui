@@ -19,6 +19,7 @@ code {
 .pagination > li > a {
   background-color: white;
   color: #343a40;
+  cursor: pointer;
 }
 
 .pagination > li > a:focus,
@@ -39,4 +40,8 @@ code {
 .pagination > .active > a:hover {
   background-color: 343a40 !important;
   border: solid 1px 343a40;
+}
+
+.clickable {
+  cursor: pointer;
 }
