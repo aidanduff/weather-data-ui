@@ -36,14 +36,6 @@ class WeatherData extends Component {
 
     return (
       <div className="container">
-        <div className="jumbotron jumbotron-fluid">
-          <div className="container">
-            <h1 className="display-4">Rainy Days in Athlone</h1>
-            <p className="lead">
-              Historical rainfall data for Athlone, obtained from gov.ie
-            </p>
-          </div>
-        </div>
         <div className="row">
           <div className="col">
             <WeatherDataTable weatherDataItems={weatherDataItems} />

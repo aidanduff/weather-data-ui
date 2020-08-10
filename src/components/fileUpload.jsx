@@ -7,20 +7,18 @@ class FileUpload extends Component {
     this.state = {
       file: null,
     };
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.fileUpload = this.fileUpload.bind(this);
   }
-  onFormSubmit(e) {
+
+  onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
     this.fileUpload(this.state.file).then((response) => {
       console.log(response.data);
     });
-  }
-  onChange(e) {
+  };
+  onChange = (e) => {
     this.setState({ file: e.target.files[0] });
-  }
-  fileUpload(file) {
+  };
+  fileUpload = (file) => {
     const url = "http://localhost:8080/upload";
     const formData = new FormData();
     formData.append("file", file);
@@ -30,14 +28,20 @@ class FileUpload extends Component {
       },
     };
     return post(url, formData, config);
-  }
+  };
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form onSubmit={this.onFormSubmit} className="m-4">
         <h1>File Upload</h1>
-        <input type="file" onChange={this.onChange} />
-        <button type="submit">Upload</button>
+        <div className="custom-file">
+          <div className="input-group">
+            <input type="file" className="mb-2" onChange={this.onChange} />
+          </div>
+          <button className="btn btn-primary" type="submit">
+            Upload
+          </button>
+        </div>
       </form>
     );
   }
