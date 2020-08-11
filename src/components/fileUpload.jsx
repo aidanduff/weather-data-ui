@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios, { post } from "axios";
-import { Link } from "react-router-dom";
+import { post } from "axios";
 
 class FileUpload extends Component {
   constructor(props) {

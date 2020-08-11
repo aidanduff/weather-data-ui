@@ -11,7 +11,6 @@ const Nav = () => {
           <br></br>
           <Link to="/"> Home </Link>
           <Link to="/upload"> Upload </Link>
-          <a href=""></a>
         </p>
       </div>
     </div>

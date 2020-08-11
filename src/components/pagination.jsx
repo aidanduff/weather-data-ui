@@ -19,7 +19,7 @@ const Pagination = ({
           <a
             className="page-link disbled"
             onClick={() =>
-              currentPage == 1 ? null : onPageChange(--currentPage)
+              currentPage === 1 ? null : onPageChange(--currentPage)
             }
           >
             Previous
