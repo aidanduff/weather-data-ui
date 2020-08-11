@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios, { post } from "axios";
+import { Link } from "react-router-dom";
 
 class FileUpload extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class FileUpload extends Component {
   onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
     this.fileUpload(this.state.file).then((response) => {
+      this.props.history.push("/home");
       console.log(response.data);
     });
   };
@@ -43,7 +45,11 @@ class FileUpload extends Component {
               onChange={this.onChange}
             />
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button
+            className="btn btn-primary"
+            type="submit"
+            // onClick={this.props.history.push("/home")}
+          >
             Upload
           </button>
         </div>
