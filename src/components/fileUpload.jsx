@@ -36,7 +36,12 @@ class FileUpload extends Component {
         <h1>File Upload</h1>
         <div className="custom-file">
           <div className="input-group">
-            <input type="file" className="mb-2" onChange={this.onChange} />
+            <input
+              type="file"
+              accept="text/csv, .csv"
+              className="mb-2"
+              onChange={this.onChange}
+            />
           </div>
           <button className="btn btn-primary" type="submit">
             Upload
