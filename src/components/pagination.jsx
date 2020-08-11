@@ -16,7 +16,12 @@ const Pagination = ({
       <ul className="pagination m-2">
         <li>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="page-link" onClick={() => onPageChange(--currentPage)}>
+          <a
+            className="page-link disbled"
+            onClick={() =>
+              currentPage == 1 ? null : onPageChange(--currentPage)
+            }
+          >
             Previous
           </a>
         </li>
@@ -42,7 +47,14 @@ const Pagination = ({
         )}
         <li>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="page-link" onClick={() => onPageChange(++currentPage)}>
+          <a
+            className="page-link"
+            onClick={() =>
+              currentPage <= Math.ceil(weatherDataItemsCount / pageSize) + 1
+                ? null
+                : onPageChange(++currentPage)
+            }
+          >
             Next
           </a>
         </li>
