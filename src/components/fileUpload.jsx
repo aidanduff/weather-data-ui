@@ -22,8 +22,8 @@ class FileUpload extends Component {
 
   getButtonStatus = () => {
     return this.state.buttonStatus
-      ? "btn btn-primary"
-      : "btn btn-primary disabled";
+      ? "btn btn-primary mt-2"
+      : "btn btn-primary mt-2 disabled";
   };
 
   onChange = (e) => {
@@ -67,9 +67,15 @@ class FileUpload extends Component {
               <input
                 type="file"
                 accept="text/csv, .csv"
-                className="mb-2"
+                className="custom-file-input"
+                id="customFile"
                 onChange={this.onChange}
               />
+              <label class="custom-file-label" for="customFile">
+                {this.state.file === null
+                  ? "Choose File"
+                  : this.state.file.name}
+              </label>
             </div>
             <button className={this.getButtonStatus()} type="submit">
               Upload
