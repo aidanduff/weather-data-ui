@@ -6,7 +6,7 @@ class ChartPanel extends Component {
   render(props) {
     return (
       <div key={this.props.weatherDataItems[0].year} className="chart col">
-        <div className="row mt-2 mb-3">
+        <div className="row">
           <div className="card">
             <h5 className="card-header">Rainy Days Per Month</h5>
             <div className="card-body">

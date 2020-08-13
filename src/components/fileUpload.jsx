@@ -22,8 +22,8 @@ class FileUpload extends Component {
 
   getButtonStatus = () => {
     return this.state.buttonStatus
-      ? "btn btn-primary mt-2"
-      : "btn btn-primary mt-2 disabled";
+      ? "btn btn-primary btn-block mt-4"
+      : "btn btn-primary btn-block mt-4 disabled";
   };
 
   onChange = (e) => {
@@ -50,7 +50,7 @@ class FileUpload extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="contentContainer">
         {this.state.showMessage && (
           <div>
             <FlashMessage duration={3000}>
@@ -60,9 +60,9 @@ class FileUpload extends Component {
             </FlashMessage>
           </div>
         )}
-        <form onSubmit={this.onFormSubmit} className="m-4">
-          <h1>File Upload</h1>
-          <div className="custom-file">
+        <form onSubmit={this.onFormSubmit}>
+          <h1 className="mt-2">File Upload</h1>
+          <div className="custom-file mt-4">
             <div className="input-group">
               <input
                 type="file"
@@ -71,7 +71,7 @@ class FileUpload extends Component {
                 id="customFile"
                 onChange={this.onChange}
               />
-              <label class="custom-file-label" for="customFile">
+              <label className="custom-file-label" htmlFor="customFile">
                 {this.state.file === null
                   ? "Choose File"
                   : this.state.file.name}
@@ -82,7 +82,7 @@ class FileUpload extends Component {
             </button>
           </div>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }

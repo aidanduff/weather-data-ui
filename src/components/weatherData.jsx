@@ -35,7 +35,10 @@ class WeatherData extends Component {
     );
 
     return (
-      <div className="container">
+      <div
+        className="contentContainer"
+        // style={{ paddingLeft: 0, paddingRight: 0, paddingTop: 20 }}
+      >
         <div className="row">
           <div className="col">
             <WeatherDataTable weatherDataItems={weatherDataItems} />
