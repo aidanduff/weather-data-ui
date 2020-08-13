@@ -18,7 +18,7 @@ class PieChart extends Component {
       <Pie
         data={chartData}
         width={500}
-        height={220}
+        height={221}
         options={{ maintainAspectRatio: true }}
       />
     );
