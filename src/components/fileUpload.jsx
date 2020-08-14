@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FlashMessage from "react-flash-message";
 import { post } from "axios";
+import Message from "./message";
 
 class FileUpload extends Component {
   constructor(props) {
@@ -15,7 +15,12 @@ class FileUpload extends Component {
   onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
     this.fileUpload(this.state.file).then((response) => {
-      this.props.history.push("/home");
+      this.props.history.push({
+        pathname: "/home",
+        state: {
+          showMessage: true,
+        },
+      });
       console.log(response.data);
     });
   };
@@ -29,7 +34,10 @@ class FileUpload extends Component {
   onChange = (e) => {
     const str = e.target.files[0].name;
     if (str.endsWith(".csv")) {
-      this.setState({ file: e.target.files[0], buttonStatus: true });
+      this.setState({
+        file: e.target.files[0],
+        buttonStatus: true,
+      });
     } else {
       this.setState({ showMessage: true });
     }
@@ -51,15 +59,12 @@ class FileUpload extends Component {
   render() {
     return (
       <div className="contentContainer">
-        {this.state.showMessage && (
-          <div>
-            <FlashMessage duration={3000}>
-              <div className="alert alert-danger">
-                <p>Selected file must be in .csv format!</p>
-              </div>
-            </FlashMessage>
-          </div>
-        )}
+        <Message
+          showMessage={this.state.showMessage}
+          messageClass={"alert alert-danger"}
+          duration={3000}
+          message={"File must be in .csv format!"}
+        />
         <form onSubmit={this.onFormSubmit}>
           <h1 className="mt-2">File Upload</h1>
           <div className="custom-file mt-4">

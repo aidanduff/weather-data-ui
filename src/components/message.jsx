@@ -1,13 +1,22 @@
 import React from "react";
-import { render } from "react-dom";
 import FlashMessage from "react-flash-message";
+import { Component } from "react";
 
-const Message = () => {
-  <FlashMessage duration={5000}>
-    <strong>I will disapper in 5 seconds!</strong>
-  </FlashMessage>;
-
-  render(Message, document.body);
-};
+class Message extends Component {
+  render(props) {
+    const { showMessage, messageClass, duration, message } = this.props;
+    return (
+      <div>
+        {showMessage && (
+          <FlashMessage duration={duration}>
+            <div className={messageClass}>
+              <p>{message}</p>
+            </div>
+          </FlashMessage>
+        )}
+      </div>
+    );
+  }
+}
 
 export default Message;

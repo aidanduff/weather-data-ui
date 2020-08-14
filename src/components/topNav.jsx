@@ -1,18 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Nav = () => {
+const TopNav = () => {
   return (
     <div
       className="jumbotron jumbotron-fluid bg-dark text-white"
       style={{ maxHeight: "200px", textAlign: "center" }}
     >
-      <div className="container">
-        <h1 className="display-4">Rainy Days</h1>
-        <p className="lead ">
-          A tool for visualising weather data<br></br>
-        </p>
-      </div>
+      <h1 className="display-4">Rainy Days</h1>
+      <p className="lead ">
+        A tool for visualising weather data<br></br>
+      </p>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div
           className="collapse navbar-collapse justify-content-center"
@@ -41,4 +39,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default TopNav;
