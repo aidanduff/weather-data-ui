@@ -5,6 +5,7 @@ import { paginate } from "../utils/paginate";
 import WeatherDataTable from "./weatherDataTable";
 import ChartPanel from "./chartPanel";
 import Message from "./message";
+import { History } from "history";
 
 class WeatherData extends Component {
   state = {
@@ -40,7 +41,7 @@ class WeatherData extends Component {
 
     return (
       <div className="contentContainer">
-        {showMessage && (
+        {this.props.location.state && (
           <Message
             showMessage={showMessage}
             messageClass={"alert alert-success"}

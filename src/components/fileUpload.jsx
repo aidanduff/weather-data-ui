@@ -3,14 +3,11 @@ import { post } from "axios";
 import Message from "./message";
 
 class FileUpload extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      file: null,
-      buttonStatus: false,
-      showMessage: false,
-    };
-  }
+  state = {
+    file: null,
+    buttonStatus: false,
+    showMessage: false,
+  };
 
   onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
@@ -32,6 +29,7 @@ class FileUpload extends Component {
   };
 
   onChange = (e) => {
+    console.log(this.state.showMessage);
     const str = e.target.files[0].name;
     if (str.endsWith(".csv")) {
       this.setState({
@@ -39,11 +37,22 @@ class FileUpload extends Component {
         buttonStatus: true,
       });
     } else {
-      this.setState({ showMessage: true });
+      this.setState(
+        {
+          showMessage: true,
+        },
+        () =>
+          setTimeout(() => {
+            console.log("in the timeout");
+            this.setState({ showMessage: false });
+          }, 3000)
+      );
     }
 
     console.log(e.target.files[0]);
+    console.log(this.state.showMessage);
   };
+
   fileUpload = (file) => {
     const url = "http://localhost:8080/upload";
     const formData = new FormData();
@@ -57,14 +66,17 @@ class FileUpload extends Component {
   };
 
   render() {
+    const { showMessage } = this.state;
     return (
       <div className="contentContainer">
-        <Message
-          showMessage={this.state.showMessage}
-          messageClass={"alert alert-danger"}
-          duration={3000}
-          message={"File must be in .csv format!"}
-        />
+        {showMessage && (
+          <Message
+            showMessage={showMessage}
+            messageClass={"alert alert-danger"}
+            duration={3000}
+            message={"File must be in .csv format!"}
+          />
+        )}
         <form onSubmit={this.onFormSubmit}>
           <h1 className="mt-2">File Upload</h1>
           <div className="custom-file mt-4">

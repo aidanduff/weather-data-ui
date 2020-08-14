@@ -4,16 +4,14 @@ import { Component } from "react";
 
 class Message extends Component {
   render(props) {
-    const { showMessage, messageClass, duration, message } = this.props;
+    const { messageClass, duration, message } = this.props;
     return (
       <div>
-        {showMessage && (
-          <FlashMessage duration={duration}>
-            <div className={messageClass}>
-              <p>{message}</p>
-            </div>
-          </FlashMessage>
-        )}
+        <FlashMessage duration={duration}>
+          <div className={messageClass}>
+            <p>{message}</p>
+          </div>
+        </FlashMessage>
       </div>
     );
   }
