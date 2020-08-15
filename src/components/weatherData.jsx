@@ -15,11 +15,21 @@ class WeatherData extends Component {
     showMessage: false,
   };
 
+  componentWillMount() {
+    console.log("cwm");
+    if (this.props.location.state === null) return;
+    this.setState({ showMessage: this.props.location.state.showMessage });
+    // clear state.someValue from history
+    this.props.history.replace({
+      pathname: "/home",
+      state: { showMessage: false },
+    });
+  }
+
   componentDidMount() {
     WeatherDataService.retrieveAllData().then((response) => {
       this.setState({
         weatherDataItems: response.data,
-        showMessage: this.props.location.state != null,
       });
     });
   }
@@ -41,9 +51,8 @@ class WeatherData extends Component {
 
     return (
       <div className="contentContainer">
-        {this.props.location.state && (
+        {showMessage && (
           <Message
-            showMessage={showMessage}
             messageClass={"alert alert-success"}
             duration={3000}
             message={"File uploaded successfully!"}
