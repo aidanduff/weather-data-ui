@@ -5,19 +5,24 @@ import { paginate } from "../utils/paginate";
 import WeatherDataTable from "./weatherDataTable";
 import ChartPanel from "./chartPanel";
 import Message from "./message";
-import { History } from "history";
 
 class WeatherData extends Component {
-  state = {
-    weatherDataItems: [],
-    currentPage: 1,
-    pageSize: 12,
-    showMessage: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      weatherDataItems: [],
+      currentPage: 1,
+      pageSize: 12,
+      showMessage: false,
+    };
+  }
 
   componentWillMount() {
-    console.log("cwm");
-    if (this.props.location.state === null) return;
+    if (
+      this.props.location.state === null ||
+      this.props.location.state === undefined
+    )
+      return;
     this.setState({ showMessage: this.props.location.state.showMessage });
     // clear state.someValue from history
     this.props.history.replace({
