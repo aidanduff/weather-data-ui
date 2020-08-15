@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Pie } from "react-chartjs-2";
 import { getSeasonalPrecipitation } from "../utils/seasonalPrecipitation";
+import { colorData } from "./../utils/colorData";
 
 class PieChart extends Component {
   render(props) {
+    const { weatherDataItems } = this.props;
     const chartData = {};
     chartData.labels = ["Winter", "Spring", "Summer", "Autumn"];
     chartData.datasets = [
       {
-        label: `Rainy days per month in ${this.props.weatherDataItems[0].year}`,
-        data: getSeasonalPrecipitation(this.props.weatherDataItems),
-        backgroundColor: ["#379683", "#7395AE", "#557A95", "#B1A296"],
+        label: `Rainy days per month in ${weatherDataItems[0].year}`,
+        data: getSeasonalPrecipitation(weatherDataItems),
+        backgroundColor: colorData,
       },
     ];
 
