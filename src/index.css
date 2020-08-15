@@ -52,7 +52,11 @@ code {
   padding-top: 20px;
 }
 
-.fa-github,
-.fa-linkedin {
+.fa-github-navbar {
   color: white;
+}
+
+.fa-github-about,
+.fa-linkedin-about {
+  color: black;
 }

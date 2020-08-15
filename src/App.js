@@ -5,6 +5,7 @@ import FileUpload from "./components/fileUpload";
 import TopNav from "./components/topNav";
 import { Route, Redirect, Switch } from "react-router-dom";
 import BottomNav from "./components/bottomNav";
+import About from "./components/about";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route path="/home" component={WeatherData}></Route>
           <Route path="/upload" component={FileUpload}></Route>
+          <Route path="/about" component={About}></Route>
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />
         </Switch>
