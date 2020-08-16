@@ -28,6 +28,11 @@ const TopNav = () => {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/settings">
+                Settings
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/about">
                 About
               </NavLink>

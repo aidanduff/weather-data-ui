@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import WeatherData from "./components/weatherData";
+import Settings from "./components/settings";
 import FileUpload from "./components/fileUpload";
 import TopNav from "./components/topNav";
 import { Route, Redirect, Switch } from "react-router-dom";
@@ -16,6 +17,7 @@ function App() {
           <Route path="/home" component={WeatherData}></Route>
           <Route path="/upload" component={FileUpload}></Route>
           <Route path="/about" component={About}></Route>
+          <Route path="/settings" component={Settings}></Route>
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />
         </Switch>

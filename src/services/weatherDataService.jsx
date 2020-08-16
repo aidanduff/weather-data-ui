@@ -16,6 +16,10 @@ class WeatherDataService {
     };
     return axios.post(url, formData, config);
   }
+
+  deleteAllData() {
+    axios.delete(`http://localhost:8080/delete`);
+  }
 }
 
 export default new WeatherDataService();
