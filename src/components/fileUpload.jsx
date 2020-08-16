@@ -11,15 +11,17 @@ class FileUpload extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
-    weatherDataService.addRecord(this.state.file).then((response) => {
-      this.props.history.push({
-        pathname: "/home",
-        state: {
-          showMessage: true,
-        },
+    if (this.state.file != null) {
+      weatherDataService.addRecord(this.state.file).then((response) => {
+        this.props.history.push({
+          pathname: "/home",
+          state: {
+            showMessage: true,
+          },
+        });
+        console.log(response.data);
       });
-      console.log(response.data);
-    });
+    }
   };
 
   getButtonStatus = () => {
