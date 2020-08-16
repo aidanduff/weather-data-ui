@@ -34,7 +34,7 @@ class Settings extends Component {
         )}
         <h1 className="mt-2">Delete</h1>
         <button
-          className="btn btn-primary btn-block mt-4"
+          className="btn btn-primary btn-block mt-4 shadow-none"
           onClick={this.handleClick}
           type="submit"
         >

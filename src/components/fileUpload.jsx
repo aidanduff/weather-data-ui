@@ -17,6 +17,7 @@ class FileUpload extends Component {
           pathname: "/home",
           state: {
             showMessage: true,
+            message: response.data.message,
           },
         });
         console.log(response.data);

@@ -14,6 +14,7 @@ class WeatherData extends Component {
       currentPage: 1,
       pageSize: 12,
       showMessage: false,
+      uploadMessage: "",
     };
   }
 
@@ -23,7 +24,10 @@ class WeatherData extends Component {
       this.props.location.state === undefined
     )
       return;
-    this.setState({ showMessage: this.props.location.state.showMessage });
+    this.setState({
+      showMessage: this.props.location.state.showMessage,
+      uploadMessage: this.props.location.state.message,
+    });
     // clear state.someValue from history
     this.props.history.replace({
       pathname: "/home",
@@ -44,7 +48,7 @@ class WeatherData extends Component {
   };
 
   render(props) {
-    const { currentPage, pageSize, showMessage } = this.state;
+    const { currentPage, pageSize, showMessage, uploadMessage } = this.state;
 
     if (this.state.weatherDataItems.length === 0) return null;
 
@@ -60,7 +64,7 @@ class WeatherData extends Component {
           <Message
             messageClass={"alert alert-success"}
             duration={3000}
-            message={"File uploaded successfully!"}
+            message={uploadMessage}
           />
         )}
         <div className="row">
