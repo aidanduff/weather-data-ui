@@ -11,7 +11,7 @@ const Settings = () => {
       <h1 className="pt-4">Delete</h1>
       <button
         className="btn btn-primary btn-block"
-        onClick={handleClick()}
+        onClick={handleClick}
         type="submit"
       >
         Delete
