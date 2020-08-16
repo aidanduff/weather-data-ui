@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { post } from "axios";
 import Message from "./message";
+import weatherDataService from "../services/weatherDataService";
 
 class FileUpload extends Component {
   state = {
@@ -11,7 +11,7 @@ class FileUpload extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault(); // Stop form submit
-    this.fileUpload(this.state.file).then((response) => {
+    weatherDataService.addRecord(this.state.file).then((response) => {
       this.props.history.push({
         pathname: "/home",
         state: {
@@ -51,18 +51,6 @@ class FileUpload extends Component {
 
     console.log(e.target.files[0]);
     console.log(this.state.showMessage);
-  };
-
-  fileUpload = (file) => {
-    const url = "http://localhost:8080/upload";
-    const formData = new FormData();
-    formData.append("file", file);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    return post(url, formData, config);
   };
 
   render() {
