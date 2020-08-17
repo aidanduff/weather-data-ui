@@ -43,6 +43,8 @@ class WeatherData extends Component {
     });
   }
 
+  handlePageSizeChange = () => {};
+
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
@@ -52,11 +54,37 @@ class WeatherData extends Component {
 
     if (this.state.weatherDataItems.length === 0) return null;
 
-    const weatherDataItems = paginate(
-      this.state.weatherDataItems,
-      currentPage,
-      pageSize
-    );
+    //sandbox
+    const firstYear = this.state.weatherDataItems[0].year;
+    const lastYear = this.state.weatherDataItems[
+      this.state.weatherDataItems.length - 1
+    ].year;
+    const uniqueYears = lastYear - firstYear;
+    let chunks = [];
+
+    let year = firstYear;
+
+    for (let i = 0; i <= uniqueYears; i++) {
+      let chunk = this.state.weatherDataItems.filter(
+        (wdi) => wdi.year === year
+      );
+      chunks.push(chunk);
+      year++;
+    }
+
+    console.log(chunks);
+
+    console.log(firstYear, lastYear, uniqueYears);
+
+    const currentChunk = chunks[currentPage + 1];
+
+    //sandbox
+
+    // const weatherDataItems = paginate(
+    //   this.state.weatherDataItems,
+    //   currentPage,
+    //   pageSize
+    // );
 
     return (
       <div className="contentContainer">
@@ -69,16 +97,17 @@ class WeatherData extends Component {
         )}
         <div className="row">
           <div className="col">
-            <WeatherDataTable weatherDataItems={weatherDataItems} />
+            <WeatherDataTable weatherDataItems={currentChunk} />
             <Pagination
               weatherDataItemsCount={this.state.weatherDataItems.length}
               currentPage={currentPage}
-              pageSize={pageSize}
+              pageSize={currentChunk.length}
               onPageChange={this.handlePageChange}
+              pagesCount={uniqueYears - 1}
             />
           </div>
           <div className="col">
-            <ChartPanel weatherDataItems={weatherDataItems} />
+            <ChartPanel weatherDataItems={currentChunk} />
           </div>
         </div>
       </div>

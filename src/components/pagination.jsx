@@ -5,9 +5,10 @@ const Pagination = ({
   weatherDataItemsCount,
   currentPage,
   pageSize,
+  pagesCount,
   onPageChange,
 }) => {
-  const pagesCount = Math.ceil(weatherDataItemsCount / pageSize);
+  // const pagesCount = Math.ceil(weatherDataItemsCount / pageSize);
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
   let paginationButton = 1;
