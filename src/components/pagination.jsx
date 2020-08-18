@@ -51,7 +51,7 @@ const Pagination = ({
           <a
             className="page-link"
             onClick={() =>
-              currentPage <= Math.ceil(weatherDataItemsCount / pageSize) - 1
+              currentPage <= Math.ceil(pagesCount) - 1
                 ? onPageChange(++currentPage)
                 : null
             }

@@ -11,6 +11,8 @@ class WeatherData extends Component {
     super(props);
     this.state = {
       weatherDataItems: [],
+      currentChunk: [],
+      chunks: [],
       currentPage: 1,
       pageSize: 12,
       showMessage: false,
@@ -72,11 +74,16 @@ class WeatherData extends Component {
       year++;
     }
 
-    console.log(chunks);
+    // this.setState({ chunks: chunks });
 
     console.log(firstYear, lastYear, uniqueYears);
 
-    const currentChunk = chunks[currentPage + 1];
+    const currentChunk = chunks[currentPage];
+    // this.setState({ currentChunk: currentChunk });
+
+    // console.log(this.state.weatherDataItems);
+    console.log(chunks);
+    console.log(currentChunk);
 
     //sandbox
 
@@ -103,7 +110,7 @@ class WeatherData extends Component {
               currentPage={currentPage}
               pageSize={currentChunk.length}
               onPageChange={this.handlePageChange}
-              pagesCount={uniqueYears - 1}
+              pagesCount={uniqueYears}
             />
           </div>
           <div className="col">
