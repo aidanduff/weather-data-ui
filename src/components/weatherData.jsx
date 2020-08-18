@@ -45,7 +45,7 @@ class WeatherData extends Component {
   }
 
   getPageData = () => {
-    const firstYear = this.state.weatherDataItems[0].year;
+    let firstYear = this.state.weatherDataItems[0].year;
     const lastYear = this.state.weatherDataItems[
       this.state.weatherDataItems.length - 1
     ].year;
@@ -53,19 +53,15 @@ class WeatherData extends Component {
 
     let chunks = [];
 
-    let year = firstYear;
-
-    for (let i = 0; i <= uniqueYears; i++) {
-      let chunk = this.state.weatherDataItems.filter(
-        (wdi) => wdi.year === year
+    while (firstYear <= lastYear) {
+      chunks.push(
+        this.state.weatherDataItems.filter((wdi) => wdi.year === firstYear)
       );
-      chunks.push(chunk);
-      year++;
+      firstYear++;
     }
-
     const currentChunk = chunks[this.state.currentPage];
 
-    return { firstYear, lastYear, uniqueYears, chunks, currentChunk };
+    return { uniqueYears, currentChunk };
   };
 
   handlePageChange = (page) => {
@@ -90,20 +86,16 @@ class WeatherData extends Component {
         )}
         <div className="row">
           <div className="col">
-            {/* <WeatherDataTable weatherDataItems={this.state.currentChunk} /> */}
             <WeatherDataTable weatherDataItems={currentChunk} />
             <Pagination
               weatherDataItemsCount={this.state.weatherDataItems.length}
               currentPage={currentPage}
-              // pageSize={this.state.currentChunk.length}
               pageSize={currentChunk.length}
               onPageChange={this.handlePageChange}
-              // pagesCount={pagesCount}
               pagesCount={uniqueYears}
             />
           </div>
           <div className="col">
-            {/* <ChartPanel weatherDataItems={this.state.currentChunk} /> */}
             <ChartPanel weatherDataItems={currentChunk} />
           </div>
         </div>
