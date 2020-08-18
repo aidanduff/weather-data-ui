@@ -6,11 +6,12 @@ const About = () => {
       <h1>About</h1>
       <br></br>
       <h5>
-        This application is designed to store and display monthly weather data
-        in the form of tables and graphs. The weather data to be used here can
-        be obtained from gov.ie which has an extensive collection of datasets in
-        .csv format. Below are some links to obtain examples of these files, be
-        sure to choose the monthly files.{" "}
+        RainyDays v1.0.0<br></br>
+        <br></br> This application is designed to store and display monthly
+        weather data in the form of tables and graphs. The weather data to be
+        used here can be obtained from gov.ie which has an extensive collection
+        of datasets in .csv format. Below are some links to obtain examples of
+        these files, be sure to choose the monthly files.{" "}
         <p className="text-center">
           <br></br>
           <a
@@ -41,6 +42,7 @@ const About = () => {
         the following github repositories.{" "}
         <p className="text-center">
           {" "}
+          <br></br>
           <a
             href="https://github.com/aidanduff/weather-data-ui"
             className="text-right"

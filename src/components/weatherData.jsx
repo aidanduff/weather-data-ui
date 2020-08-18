@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import WeatherDataService from "../services/weatherDataService";
 import Pagination from "./pagination";
-import { paginate } from "../utils/paginate";
 import WeatherDataTable from "./weatherDataTable";
 import ChartPanel from "./chartPanel";
 import Message from "./message";
@@ -14,7 +13,7 @@ class WeatherData extends Component {
       currentChunk: [],
       chunks: [],
       currentPage: 1,
-      pageSize: 12,
+      // pageSize: 12,
       showMessage: false,
       uploadMessage: "",
     };
@@ -45,23 +44,13 @@ class WeatherData extends Component {
     });
   }
 
-  handlePageSizeChange = () => {};
-
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
-  };
-
-  render(props) {
-    const { currentPage, pageSize, showMessage, uploadMessage } = this.state;
-
-    if (this.state.weatherDataItems.length === 0) return null;
-
-    //sandbox
+  getPageData = () => {
     const firstYear = this.state.weatherDataItems[0].year;
     const lastYear = this.state.weatherDataItems[
       this.state.weatherDataItems.length - 1
     ].year;
     const uniqueYears = lastYear - firstYear;
+
     let chunks = [];
 
     let year = firstYear;
@@ -74,24 +63,21 @@ class WeatherData extends Component {
       year++;
     }
 
-    // this.setState({ chunks: chunks });
+    const currentChunk = chunks[this.state.currentPage];
 
-    console.log(firstYear, lastYear, uniqueYears);
+    return { firstYear, lastYear, uniqueYears, chunks, currentChunk };
+  };
 
-    const currentChunk = chunks[currentPage];
-    // this.setState({ currentChunk: currentChunk });
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
 
-    // console.log(this.state.weatherDataItems);
-    console.log(chunks);
-    console.log(currentChunk);
+  render(props) {
+    const { currentPage, showMessage, uploadMessage } = this.state;
 
-    //sandbox
+    if (this.state.weatherDataItems.length === 0) return null;
 
-    // const weatherDataItems = paginate(
-    //   this.state.weatherDataItems,
-    //   currentPage,
-    //   pageSize
-    // );
+    const { uniqueYears, currentChunk } = this.getPageData();
 
     return (
       <div className="contentContainer">
@@ -104,16 +90,20 @@ class WeatherData extends Component {
         )}
         <div className="row">
           <div className="col">
+            {/* <WeatherDataTable weatherDataItems={this.state.currentChunk} /> */}
             <WeatherDataTable weatherDataItems={currentChunk} />
             <Pagination
               weatherDataItemsCount={this.state.weatherDataItems.length}
               currentPage={currentPage}
+              // pageSize={this.state.currentChunk.length}
               pageSize={currentChunk.length}
               onPageChange={this.handlePageChange}
+              // pagesCount={pagesCount}
               pagesCount={uniqueYears}
             />
           </div>
           <div className="col">
+            {/* <ChartPanel weatherDataItems={this.state.currentChunk} /> */}
             <ChartPanel weatherDataItems={currentChunk} />
           </div>
         </div>
