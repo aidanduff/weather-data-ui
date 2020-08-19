@@ -5,7 +5,6 @@ class WeatherDataTable extends Component {
     const { weatherDataItems } = this.props;
     return (
       <React.Fragment>
-        <h1>{weatherDataItems[0].stationLocation}</h1>
         <table className="table table-bordered">
           <thead className="thead-dark">
             <tr>

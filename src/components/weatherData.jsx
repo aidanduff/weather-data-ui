@@ -82,6 +82,11 @@ class WeatherData extends Component {
             message={uploadMessage}
           />
         )}
+        <div className="row justify-content-center m-2">
+          <h1>
+            Weather Station: {this.state.weatherDataItems[0].stationLocation}
+          </h1>
+        </div>
         <div className="row">
           <div className="col">
             <WeatherDataTable weatherDataItems={currentChunk} />

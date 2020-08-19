@@ -23,7 +23,7 @@ class BarChart extends Component {
       <Bar
         data={chartData}
         width={500}
-        height={221}
+        height={223}
         options={{ maintainAspectRatio: false }}
       />
     );
