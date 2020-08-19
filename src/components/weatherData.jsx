@@ -13,7 +13,6 @@ class WeatherData extends Component {
       currentChunk: [],
       chunks: [],
       currentPage: 1,
-      // pageSize: 12,
       showMessage: false,
       uploadMessage: "",
     };
@@ -29,7 +28,7 @@ class WeatherData extends Component {
       showMessage: this.props.location.state.showMessage,
       uploadMessage: this.props.location.state.message,
     });
-    // clear state.someValue from history
+
     this.props.history.replace({
       pathname: "/home",
       state: { showMessage: false },
@@ -52,7 +51,6 @@ class WeatherData extends Component {
     const uniqueYears = lastYear - firstYear;
 
     let chunks = [];
-
     while (firstYear <= lastYear) {
       chunks.push(
         this.state.weatherDataItems.filter((wdi) => wdi.year === firstYear)

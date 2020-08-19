@@ -1,14 +1,9 @@
 import React from "react";
 import _ from "lodash";
 
-const Pagination = ({
-  weatherDataItemsCount,
-  currentPage,
-  pageSize,
-  pagesCount,
-  onPageChange,
-}) => {
-  // const pagesCount = Math.ceil(weatherDataItemsCount / pageSize);
+const Pagination = ({ currentPage, pagesCount, onPageChange }) => {
+  const middle = Math.ceil(pagesCount / 2);
+  console.log(middle);
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
   let paginationButton = 1;
@@ -39,10 +34,10 @@ const Pagination = ({
                 {page}
               </a>
             </li>
-          ) : paginationButton === pagesCount / 2 ? (
+          ) : page === middle ? (
             <li key={page} className="page-link disabled">
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a>...</a>
+              ...
             </li>
           ) : null
         )}
