@@ -7,6 +7,7 @@ class FileUpload extends Component {
     file: null,
     buttonStatus: false,
     showMessage: false,
+    filePresent: false,
     errorMessage: "",
   };
 
@@ -26,11 +27,11 @@ class FileUpload extends Component {
     }
   };
 
-  // componentDidMount() {
-  //   weatherDataService.retrieveAllData().then((response) => {
-  //     console.log("response: " + response.status);
-  //   });
-  // }
+  componentDidMount() {
+    weatherDataService.retrieveAllData().then((response) => {
+      this.setState({ filePresent: response.status === 200 });
+    });
+  }
 
   getButtonStatus = () => {
     return this.state.buttonStatus
@@ -64,7 +65,8 @@ class FileUpload extends Component {
   };
 
   render() {
-    const { showMessage, errorMessage } = this.state;
+    const { showMessage, errorMessage, filePresent } = this.state;
+    console.log("file present: " + filePresent);
     return (
       <div className="contentContainer">
         {showMessage && (
@@ -75,28 +77,32 @@ class FileUpload extends Component {
             message={errorMessage}
           />
         )}
-        <form onSubmit={this.onFormSubmit}>
-          <h1 className="mt-2">File Upload</h1>
-          <div className="custom-file mt-4">
-            <div className="input-group">
-              <input
-                type="file"
-                accept="text/csv, .csv"
-                className="custom-file-input"
-                id="customFile"
-                onChange={this.onChange}
-              />
-              <label className="custom-file-label" htmlFor="customFile">
-                {this.state.file === null
-                  ? "Choose File"
-                  : this.state.file.name}
-              </label>
+        {!filePresent ? (
+          <form onSubmit={this.onFormSubmit}>
+            <h1 className="mt-2">File Upload</h1>
+            <div className="custom-file mt-4">
+              <div className="input-group">
+                <input
+                  type="file"
+                  accept="text/csv, .csv"
+                  className="custom-file-input"
+                  id="customFile"
+                  onChange={this.onChange}
+                />
+                <label className="custom-file-label" htmlFor="customFile">
+                  {this.state.file === null
+                    ? "Choose File"
+                    : this.state.file.name}
+                </label>
+              </div>
+              <button className={this.getButtonStatus()} type="submit">
+                Upload
+              </button>
             </div>
-            <button className={this.getButtonStatus()} type="submit">
-              Upload
-            </button>
-          </div>
-        </form>
+          </form>
+        ) : (
+          <h1>File Already Present</h1>
+        )}
       </div>
     );
   }
