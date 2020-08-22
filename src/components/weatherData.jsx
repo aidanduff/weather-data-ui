@@ -57,9 +57,11 @@ class WeatherData extends Component {
       );
       firstYear++;
     }
-    const currentChunk = chunks[this.state.currentPage];
+    let currentChunk = chunks[this.state.currentPage];
 
-    return { uniqueYears, currentChunk };
+    if (!currentChunk) currentChunk = this.state.weatherDataItems;
+
+    return { uniqueYears, currentChunk, chunks };
   };
 
   handlePageChange = (page) => {
@@ -71,7 +73,7 @@ class WeatherData extends Component {
 
     if (this.state.weatherDataItems.length === 0) return null;
 
-    const { uniqueYears, currentChunk } = this.getPageData();
+    const { uniqueYears, currentChunk, chunks } = this.getPageData();
 
     return (
       <div className="contentContainer">

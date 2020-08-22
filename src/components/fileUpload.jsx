@@ -7,6 +7,7 @@ class FileUpload extends Component {
     file: null,
     buttonStatus: false,
     showMessage: false,
+    errorMessage: "",
   };
 
   onFormSubmit = (e) => {
@@ -25,6 +26,12 @@ class FileUpload extends Component {
     }
   };
 
+  // componentDidMount() {
+  //   weatherDataService.retrieveAllData().then((response) => {
+  //     console.log("response: " + response.status);
+  //   });
+  // }
+
   getButtonStatus = () => {
     return this.state.buttonStatus
       ? "btn btn-primary btn-block mt-4"
@@ -32,7 +39,6 @@ class FileUpload extends Component {
   };
 
   onChange = (e) => {
-    console.log(this.state.showMessage);
     const str = e.target.files[0].name;
     if (str.endsWith(".csv")) {
       this.setState({
@@ -43,6 +49,7 @@ class FileUpload extends Component {
       this.setState(
         {
           showMessage: true,
+          errorMessage: "File must be in .csv format!",
         },
         () =>
           setTimeout(() => {
@@ -57,7 +64,7 @@ class FileUpload extends Component {
   };
 
   render() {
-    const { showMessage } = this.state;
+    const { showMessage, errorMessage } = this.state;
     return (
       <div className="contentContainer">
         {showMessage && (
@@ -65,7 +72,7 @@ class FileUpload extends Component {
             showMessage={showMessage}
             messageClass={"alert alert-danger"}
             duration={3000}
-            message={"File must be in .csv format!"}
+            message={errorMessage}
           />
         )}
         <form onSubmit={this.onFormSubmit}>
