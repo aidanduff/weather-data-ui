@@ -101,7 +101,12 @@ class FileUpload extends Component {
             </div>
           </form>
         ) : (
-          <h1>File Already Present</h1>
+          <h3 className="mt-2">
+            A dataset is already present in the system. You must delete this
+            before uploading another. This is to ensure that data is presented
+            in a way that makes sense. To delete the existing record set, go to
+            the settings tab and click the Delete button.
+          </h3>
         )}
       </div>
     );
