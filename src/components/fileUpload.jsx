@@ -22,7 +22,6 @@ class FileUpload extends Component {
             message: response.data.message,
           },
         });
-        console.log(response.data);
       });
     }
   };
@@ -54,19 +53,14 @@ class FileUpload extends Component {
         },
         () =>
           setTimeout(() => {
-            console.log("in the timeout");
             this.setState({ showMessage: false });
           }, 3000)
       );
     }
-
-    console.log(e.target.files[0]);
-    console.log(this.state.showMessage);
   };
 
   render() {
     const { showMessage, errorMessage, filePresent } = this.state;
-    console.log("file present: " + filePresent);
     return (
       <div className="contentContainer">
         {showMessage && (

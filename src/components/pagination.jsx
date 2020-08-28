@@ -3,7 +3,6 @@ import _ from "lodash";
 
 const Pagination = ({ currentPage, pagesCount, onPageChange }) => {
   const middle = Math.ceil(pagesCount / 2);
-  console.log(middle);
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
   let paginationButton = 1;
