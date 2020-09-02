@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const WeatherDataTable = ({ weatherDataItems }) => {
+const weatherDataTable = ({ weatherDataItems }) => {
   return (
     <React.Fragment>
       <table className="table table-bordered">
@@ -29,4 +29,4 @@ const WeatherDataTable = ({ weatherDataItems }) => {
   );
 };
 
-export default WeatherDataTable;
+export default weatherDataTable;
