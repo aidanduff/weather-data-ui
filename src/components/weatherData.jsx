@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import WeatherDataService from "../services/weatherDataService";
 import Pagination from "./pagination";
-import WeatherDataTable from "./weatherDataTable";
+// import WeatherDataTable from "./weatherDataTable";
 import ChartPanel from "./chartPanel";
 import Message from "./message";
 
@@ -91,7 +91,7 @@ class WeatherData extends Component {
         </div>
         <div className="row">
           <div className="col">
-            <WeatherDataTable weatherDataItems={currentChunk} />
+            {/* <WeatherDataTable weatherDataItems={currentChunk} /> */}
             <Pagination
               weatherDataItemsCount={this.state.weatherDataItems.length}
               currentPage={currentPage}
